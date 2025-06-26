@@ -1,15 +1,30 @@
 /* Custom CSS to override Freelancer template's styles.css while preserving theme */
 
-/* Round Headshot (120px, circular) */
+
+/* Round Headshot (Fixed 200px, circular on all devices) */
 .masthead-avatar {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
+    min-width: 120px; /* Prevent shrinking */
+    min-height: 120px; /* Prevent shrinking */
+    border-radius: 50% !important; /* Ensure circle, override any conflicts */
     border: 3px solid #fff; /* Matches theme's white border */
-    object-fit: cover;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    object-fit: cover; /* Crop to fill, maintain aspect ratio */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    display: block; /* Ensure proper centering */
+    margin: 0 auto 2rem; /* Center and adjust spacing */
 }
 
+/* Remove responsive scaling for headshot */
+@media (max-width: 767px) {
+    .masthead-avatar {
+        width: 200px;
+        height: 200px;
+        min-width: 200px;
+        min-height: 200px;
+        border-radius: 50% !important;
+    }
+}
 /* Smaller Tiles for Experience Section Only (~300px max-height, 150px images) */
 #experience .portfolio-item {
     max-height: 300px;
